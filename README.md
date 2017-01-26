@@ -5,3 +5,5 @@ Code for GEEC demo
 
 2. Android App for Demo getting temperature and power data from yeelink
 	And calculate EER(using approximate formula)
+
+	OK
