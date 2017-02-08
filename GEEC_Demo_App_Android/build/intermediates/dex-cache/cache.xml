@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\rpan2\Documents\C_C++\GEEC\GEEC_Demo\GEEC_Demo\GEEC_Demo_App_Android\app\src\main\java\com\roy\hellocharts-library-1.5.8.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="700944cb3a8ce4fe543cfac1a9146a11cbf702dc">
+        <dex dex="C:\Users\rpan2\Documents\C_C++\GEEC\GEEC_Demo\GEEC_Demo\GEEC_Demo_App_Android\app\build\intermediates\pre-dexed\debug\hellocharts-library-1.5.8_5cf1030b3976b3125fba27208187583d8d66607f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\rpan2\Documents\C_C++\GEEC\GEEC_Demo\GEEC_Demo\GEEC_Demo_App_Android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\libs\internal_impl-23.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
+        <dex dex="C:\Users\rpan2\Documents\C_C++\GEEC\GEEC_Demo\GEEC_Demo\GEEC_Demo_App_Android\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.0_135fb6da5dfda0ef38970934fed854afe7c92dd0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\rpan2\Documents\C_C++\GEEC\GEEC_Demo\GEEC_Demo\GEEC_Demo_App_Android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="C:\Users\rpan2\Documents\C_C++\GEEC\GEEC_Demo\GEEC_Demo\GEEC_Demo_App_Android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-8.4.0_ab29067744f78dc7380b09a41ffcd283dd233d1d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\rpan2\Documents\C_C++\GEEC\GEEC_Demo\GEEC_Demo\GEEC_Demo_App_Android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="C:\Users\rpan2\Documents\C_C++\GEEC\GEEC_Demo\GEEC_Demo\GEEC_Demo_App_Android\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-22.2.1_4f84fd6662ee2ef73c28a330284abfb89a3deaad.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\rpan2\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.0\support-annotations-23.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="C:\Users\rpan2\Documents\C_C++\GEEC\GEEC_Demo\GEEC_Demo\GEEC_Demo_App_Android\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.0_af6353988bcc96b1ce7da49442566555a315dffc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\rpan2\Documents\C_C++\GEEC\GEEC_Demo\GEEC_Demo\GEEC_Demo_App_Android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="C:\Users\rpan2\Documents\C_C++\GEEC\GEEC_Demo\GEEC_Demo\GEEC_Demo_App_Android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-appindexing-8.4.0_9c9d66461315fde8cb96b2b2c035d64808e41a0a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\rpan2\Documents\C_C++\GEEC\GEEC_Demo\GEEC_Demo\GEEC_Demo_App_Android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="C:\Users\rpan2\Documents\C_C++\GEEC\GEEC_Demo\GEEC_Demo\GEEC_Demo_App_Android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-base-8.4.0_4b93491bb47cfbb806c3da0115ca63116a2a51e7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\rpan2\Documents\C_C++\GEEC\GEEC_Demo\GEEC_Demo\GEEC_Demo_App_Android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="C:\Users\rpan2\Documents\C_C++\GEEC\GEEC_Demo\GEEC_Demo\GEEC_Demo_App_Android\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.0.0_3982681228214d93d94a3a10de52166f921ed438.jar" />
+    </item>
+
+</items>

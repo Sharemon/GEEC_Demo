@@ -12,7 +12,7 @@
     tools:context="com.roy.myapplication.MainActivity">
 
     <Button
-        android:text="Get"
+        android:text="Start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/GetBnt"
@@ -30,25 +30,7 @@
         android:layout_toStartOf="@+id/GetBnt" />
 
     <TextView
-        android:text="温度"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/GetTemp"
-        android:layout_alignParentStart="true"
-        android:id="@+id/TempLab" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/GetTemp"
-        android:layout_alignBaseline="@+id/GetPower"
-        android:layout_alignBottom="@+id/GetPower"
-        android:layout_toEndOf="@+id/TempLab"
-        android:layout_marginStart="15dp" />
-
-    <TextView
-        android:text="功率"
+        android:text="Power"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/PowerLab"
@@ -77,39 +59,56 @@
     </lecho.lib.hellocharts.view.LineChartView>
 
     <TextView
-        android:text="功率"
+        android:text="EER"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/PowerLab"
+        android:id="@+id/EERLab"
+        android:layout_above="@+id/chartEER"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TempLab2"
+        android:layout_below="@+id/GetBnt"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TempLab"
+        android:layout_alignBaseline="@+id/PowerLab"
+        android:layout_alignBottom="@+id/PowerLab"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Power"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/PowerLab2"
         android:layout_below="@+id/chartTemp"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="7dp" />
 
     <lecho.lib.hellocharts.view.LineChartView
         android:id="@+id/chartPower"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:background="#32CD32"
-        android:layout_below="@+id/PowerLab"
+        android:layout_below="@+id/PowerLab2"
         android:layout_alignParentStart="true">
     </lecho.lib.hellocharts.view.LineChartView>
 
     <TextView
-        android:text="EER"
+        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/EERLab"
-        android:layout_below="@+id/chartPower"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="7dp" />
-
-    <TextView
-        android:text="温度"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TempLab"
-        android:layout_below="@+id/GetBnt"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/GetTemp"
+        android:layout_alignBaseline="@+id/TempLab"
+        android:layout_alignBottom="@+id/TempLab"
+        android:layout_toEndOf="@+id/PowerLab2" />
 
 
 </RelativeLayout>

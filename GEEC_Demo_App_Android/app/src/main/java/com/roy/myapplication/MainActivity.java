@@ -18,6 +18,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -57,6 +58,12 @@ public class MainActivity extends AppCompatActivity {
     private LineChartView lineChartTemp;
     private LineChartView lineChartPower;
     private LineChartView lineChartEER;
+
+    private double initTemperature = 25;
+    private double energy = 0;
+    private double powerCur = 0;
+    private double tempCure = 0;
+    private DecimalFormat df;
 
     //String[] date = {"1","2","3","4","5","6","7","8","9","10"};//X轴的标注
     int[] score= {0,0,0,0,0,0,0,0,0,0};//图表的数据点
@@ -106,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initLineChart(LineChartView lineChart, List<PointValue> mPointValues) {
-        Line line = new Line(mPointValues).setColor(Color.parseColor("#FFCD41"));  //折线的颜色（橙色）
+        Line line = new Line(mPointValues).setColor(Color.YELLOW);  //折线的颜色（橙色）
         List<Line> lines = new ArrayList<Line>();
         line.setShape(ValueShape.CIRCLE);//折线图上每个数据点的形状  这里是圆形 （有三种 ：ValueShape.SQUARE  ValueShape.CIRCLE  ValueShape.DIAMOND）
         line.setCubic(false);//曲线是否平滑，即是曲线还是折线
@@ -120,14 +127,16 @@ public class MainActivity extends AppCompatActivity {
 
         // Y轴是根据数据的大小自动设置Y轴上限(在下面我会给出固定Y轴数据个数的解决方案)
         Axis axisY = new Axis();  //Y轴
-        axisY.setTextColor(R.color.colorAccent);
+        //axisY.setTextColor(Color.YELLOW);
         axisY.setName("");//y轴标注
-        axisY.setTextSize(10);//设置字体大小
+        axisY.setTextSize(8);//设置字体大小
+        axisY.setInside(true);
         data.setAxisYLeft(axisY);  //Y轴设置在左边
         //data.setAxisYRight(axisY);  //y轴设置在右边
 
 
         //设置行为属性，支持缩放、滑动以及平移
+        //lineChart.setBackgroundColor(Color.BLACK);
         lineChart.setInteractive(true);
         lineChart.setZoomType(ZoomType.HORIZONTAL);
         lineChart.setMaxZoom((float) 2);//最大方法比例
@@ -223,20 +232,54 @@ public class MainActivity extends AppCompatActivity {
 
             int cnt = 0;
 
-            double tempOld = 0;
+            int sleepCnt = 0;
+
+            double tempOld2 = 0;
+            double tempOld1 = 0;
+            double powerOld2 = 0;
+            double powerOld1 = 0;
+
+            df = new DecimalFormat("###.##");
 
             while (true) {
 
-            	resultTemp = GetData("http://api.yeelink.net/v1.1/device/354183/sensor/399924/datapoints");
-            	resultPower = GetData("http://api.yeelink.net/v1.1/device/353959/sensor/399413/datapoints");
+                if (sleepCnt == 11){
+                    sleepCnt = 0;
+                }
+
+                //if(sleepCnt == 0) {
+                    resultTemp = GetData("http://api.yeelink.net/v1.1/device/354183/sensor/399924/datapoints");
+                    resultPower = GetData("http://api.yeelink.net/v1.1/device/353959/sensor/399413/datapoints");
+
+                    powerCur = Double.valueOf(resultPower) * 10;
+                /*}
+                else{
+                    if(cnt >= 2) {
+                        tempCure = tempOld1 + (tempOld1 - tempOld2);
+                        powerCur = powerOld1 = (powerOld1 - powerOld2);
+                    }
+                    else{
+                        tempCure = tempOld1;
+                        powerCur = powerOld1;
+                    }
+
+                    resultTemp = String.valueOf(df.format(tempCure));
+                    resultPower = String.valueOf(df.format(powerCur));
+                }
+
+                tempOld2 = tempOld1;
+                powerOld2 = powerOld1;
+                tempOld1 = Double.valueOf(resultTemp);
+                powerOld1 = Double.valueOf(resultPower);
+                */
 
                 tv = (TextView) findViewById(R.id.GetTemp);
                 tv.post(new Runnable() {
                     @Override
                     public void run() {
-                        tv.setText(resultTemp);
+                        tv.setText(resultTemp + " ℃");
                         TextView tv2 = (TextView) findViewById(R.id.GetPower);
-                        tv2.setText(resultPower);
+                        tv2.setText(String.valueOf(df.format(powerCur)) + " W");
                     }
                 });
                 /*
@@ -248,19 +291,27 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 */
+
                 ChangAxisPoints(mPointValuesTemp, resultTemp);
-                ChangAxisPoints(mPointValuesPower, resultPower);
+                ChangAxisPoints(mPointValuesPower, Double.toString(powerCur));
 
-                if (cnt >= 2) {
-
-                    double tempCur = Double.valueOf(resultTemp);
-                    double powerCur = Double.valueOf(resultPower);
-
-                    ChangAxisPoints(mPointValuesEER, Double.toString(Math.abs(tempCur - tempOld)/powerCur*100) );
+                // Save the first temperature value as init temperature
+                if (cnt == 0){
+                    initTemperature = Double.valueOf(resultTemp);
                 }
 
-                tempOld = Double.valueOf(resultTemp);
+                // Calculate the energy
+                energy += Double.valueOf(resultPower) * 10;
 
+                // Calculate the EER = (current temperature - init temperature) / consume energy
+                if (cnt >= 1) {
+
+                    double tempCur = Double.valueOf(resultTemp);
+
+                    ChangAxisPoints(mPointValuesEER, Double.toString(Math.abs(tempCur - initTemperature)/energy*100) );
+                }
+
+                // Update charts
                 lineChartTemp.post(new Runnable() {
                     @Override
                     public void run() {
@@ -282,6 +333,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+                // Sleep 11s waiting for next data
                 try {
                     Thread.sleep(11000);
                 }
@@ -291,6 +343,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 cnt ++;
+                sleepCnt ++;
             }
         }
     };
@@ -314,7 +367,11 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
+
             new Thread(getThread).start();
+            v.setEnabled(false);
         }
+
+
     }
 }
